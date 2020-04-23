@@ -6,4 +6,8 @@
     <select id="getAllUser" resultType="com.assistance.pojo.User">
         select * from user;
     </select>
+    
+    <select id="userLogin" resultType="com.assistance.pojo.User">
+        select * from user where username = #{username} and password = #{password}
+    </select>
 </mapper>
