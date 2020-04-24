@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 public class User {
     private Integer id;
     private String username;
-    private String passwrod;
-    private String permission;
+    private String password;
+    private Integer permission;
 
     public Integer getId() {
         return id;
@@ -25,26 +25,26 @@ public class User {
         this.username = username;
     }
 
-    public String getPasswrod() {
-        return passwrod;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswrod(String passwrod) {
-        this.passwrod = passwrod;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getPermission() {
+    public Integer getPermission() {
         return permission;
     }
 
-    public void setPermission(String permission) {
+    public void setPermission(Integer permission) {
         this.permission = permission;
     }
 
-    public User(Integer id, String username, String passwrod, String permission) {
+    public User(Integer id, String username, String password, Integer permission) {
         this.id = id;
         this.username = username;
-        this.passwrod = passwrod;
+        this.password = password;
         this.permission = permission;
     }
 

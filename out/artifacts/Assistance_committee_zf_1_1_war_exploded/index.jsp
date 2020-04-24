@@ -45,7 +45,7 @@
 <div class="content">
     <div class="form sign-in">
         <h2>欢迎回来</h2>
-        <form action="${pageContext.request.contextPath}/login">
+        <form action="${pageContext.request.contextPath}/login" method="post">
             <label>
                 <span>用户名</span>
                 <input type="text" name="username"/>
@@ -77,14 +77,14 @@
         </div>
         <div class="form sign-up">
             <h2>立即注册</h2>
-            <form action="">
+            <form action="regist" method="post">
                 <label>
                     <span>用户名</span>
-                    <input type="text" name="rusername"/>
+                    <input type="text" name="username"/>
                 </label>
                 <label>
                     <span>用户身份</span>
-                    <select class="form-control" name="usertype">
+                    <select class="form-control" name="permission">
                         <option value="0">请选择</option>
                         <option value="1">后援会用户</option>
                         <option value="2">粉丝用户</option>
@@ -94,7 +94,7 @@
                 </label>
                 <label>
                     <span>密码</span>
-                    <input type="password" name="rpassword" />
+                    <input type="password" name="password" />
                 </label>
                 <label>
                     <span>确认密码</span>

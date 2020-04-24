@@ -7,5 +7,10 @@ import java.util.List;
 public interface UserService {
     List<User> getAllUser();
 
-    User userLogin(String username,String password);
+    //登录
+    User login(String username, String password);
+
+    //注册
+    void regist(User user);
+
 }

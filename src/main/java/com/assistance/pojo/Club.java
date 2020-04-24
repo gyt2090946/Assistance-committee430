@@ -7,7 +7,7 @@ public class Club {
     private Integer id;
     private String clubname;
     private Integer predidentid;
-    private String describe;
+    private String tdescribe;
 
     public Integer getId() {
         return id;
@@ -33,19 +33,19 @@ public class Club {
         this.predidentid = predidentid;
     }
 
-    public String getDescribe() {
-        return describe;
+    public String getTdescribe() {
+        return tdescribe;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe;
+    public void setTdescribe(String tdescribe) {
+        this.tdescribe = tdescribe;
     }
 
-    public Club(Integer id, String clubname, Integer predidentid, String describe) {
+    public Club(Integer id, String clubname, Integer predidentid, String tdescribe) {
         this.id = id;
         this.clubname = clubname;
         this.predidentid = predidentid;
-        this.describe = describe;
+        this.tdescribe = tdescribe;
     }
 
     public Club() {

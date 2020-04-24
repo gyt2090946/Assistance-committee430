@@ -6,8 +6,15 @@
     <select id="getAllUser" resultType="com.assistance.pojo.User">
         select * from user;
     </select>
-    
-    <select id="userLogin" resultType="com.assistance.pojo.User">
-        select * from user where username = #{username} and password = #{password}
+
+    <!-- 根据用户名密码检测登录 -->
+    <select id="login" resultType="com.assistance.pojo.User">
+        select * from user where username=#{param1} and password=#{param2};
     </select>
+
+    <!-- 用户注册 -->
+    <insert id="regist" parameterType="com.assistance.pojo.User">
+        insert into user(username,password,permission) values(#{username},#{password},#{permission});
+    </insert>
+
 </mapper>

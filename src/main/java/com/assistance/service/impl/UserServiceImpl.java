@@ -14,13 +14,15 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
-    @Override
     public List<User> getAllUser() {
         return userMapper.getAllUser();
     }
 
-    @Override
-    public User userLogin(String username, String password) {
-        return userMapper.userLogin(username,password);
+    public User login(String username, String password) {
+        return userMapper.login(username, password);
+    }
+
+    public void regist(User user) {
+        userMapper.regist(user);
     }
 }
