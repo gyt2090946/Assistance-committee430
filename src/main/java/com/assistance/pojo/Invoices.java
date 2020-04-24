@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 public class Invoices {
     private Integer id;
     private String num;
+    private int money;
     private String date;
     private String detail;
     private Integer typeid;
@@ -28,6 +29,10 @@ public class Invoices {
     public void setNum(String num) {
         this.num = num;
     }
+
+    public int getMoney(){return money;}
+
+    public void setMoney(int money) { this.money = money;}
 
     public String getDate() {
         return date;

@@ -22,11 +22,22 @@
     <link rel="stylesheet" href="css/register.css">
     <style>
         #register{
+            margin: auto;
             margin-top: 80px;
+            width: 140px;
+            border-radius: 20px;
+
         }
-        .email{
-            margin-top: 50px;
+        #rregister{
+            margin: auto;
+            margin-top: 80px;
+            width: 140px;
+            border-radius: 20px;
+
         }
+        /*.email{*/
+            /*margin-top: 50px;*/
+        /*}*/
     </style>
 </head>
 
@@ -34,26 +45,20 @@
 <div class="content">
     <div class="form sign-in">
         <h2>欢迎回来</h2>
-        <label class="email">
-            <span>邮箱</span>
-            <input type="email" />
-        </label>
-        <!--<label>
-          <span>后援会选择</span>
-          <select class="form-control" id="example-select" name="example-select" size="1">
-            <option value="0">请选择</option>
-            <option value="1">xxx</option>
-            <option value="2">xxx</option>
-            <option value="3">xxx</option>
-          </select>
-          <hr class="simple" color="#A0A0A0"/>
-        </label>-->
-        <label>
-            <span>密码</span>
-            <input type="password" />
-        </label>
-        <!--onclick应该跳转至对应的index_OU或index_su或index_FU-->
-        <button id="register" type="button" class="submit" onclick="location.href='index_OU.html'">登 录</button>
+        <form action="${pageContext.request.contextPath}/login">
+            <label>
+                <span>用户名</span>
+                <input type="text" name="username"/>
+            </label>
+
+            <label>
+                <span>密码</span>
+                <input type="password" name="password" />
+            </label>
+            <!--onclick应该跳转至对应的index_OU或index_su或index_FU-->
+            <input type="submit" value="登录" class="submit" id="register" >
+            <%--<button id="register" type="button" class="submit">登 录</button>--%>
+        </form>
     </div>
     <div class="sub-cont">
         <div class="img">
@@ -72,29 +77,32 @@
         </div>
         <div class="form sign-up">
             <h2>立即注册</h2>
-            <label>
-                <span>用户名</span>
-                <input type="text" />
-            </label>
-            <label>
-                <span>邮箱</span>
-                <input type="email" />
-            </label>
-            <label>
-                <span>用户身份</span>
-                <select class="form-control">
-                    <option value="0">请选择</option>
-                    <option>后援会用户</option>
-                    <option>粉丝用户</option>
-                    <option>监管用户</option>
-                </select>
-                <!--        <hr class="simple" color="#A0A0A0"/>-->
-            </label>
-            <label>
-                <span>密码</span>
-                <input type="password" />
-            </label>
-            <button type="button" class="submit" onclick="location.href='index.html'">注 册</button>
+            <form action="">
+                <label>
+                    <span>用户名</span>
+                    <input type="text" name="rusername"/>
+                </label>
+                <label>
+                    <span>用户身份</span>
+                    <select class="form-control" name="usertype">
+                        <option value="0">请选择</option>
+                        <option value="1">后援会用户</option>
+                        <option value="2">粉丝用户</option>
+                        <option value="3">监管用户</option>
+                    </select>
+                    <!--        <hr class="simple" color="#A0A0A0"/>-->
+                </label>
+                <label>
+                    <span>密码</span>
+                    <input type="password" name="rpassword" />
+                </label>
+                <label>
+                    <span>确认密码</span>
+                    <input type="password" name="repassword"/>
+                </label>
+                <input type="submit" value="注册" class="submit" id="rregister" >
+                <%--<button type="button" class="submit" onclick="location.href='index.html'">注 册</button>--%>
+            </form>
         </div>
     </div>
 </div>

@@ -21,11 +21,8 @@ public class UserController {
 
     @RequestMapping(value="/getAllUser", method = RequestMethod.GET)
     public String getAllUsers(Map<String, Object> map){
-
         List<User> users = userService.getAllUser();
-
         map.put("users", users);
-
         return "showUsers";
 
     }
