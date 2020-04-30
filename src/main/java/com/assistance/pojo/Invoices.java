@@ -7,11 +7,12 @@ public class Invoices {
     private Integer id;
     private String num;
     private int money;
-    private String date;
+    private String tdate;
     private String detail;
-    private Integer typeid;
-    private Integer clubid;
-    private Integer userid;
+    private String invoicestype;
+    private Club club;
+    private User user;
+    //0代表后援会，1代表个人
     private Integer forall;
 
     public Integer getId() {
@@ -34,12 +35,12 @@ public class Invoices {
 
     public void setMoney(int money) { this.money = money;}
 
-    public String getDate() {
-        return date;
+    public String getTdate() {
+        return tdate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setTdate(String tdate) {
+        this.tdate = tdate;
     }
 
     public String getDetail() {
@@ -50,28 +51,28 @@ public class Invoices {
         this.detail = detail;
     }
 
-    public Integer getTypeid() {
-        return typeid;
+    public String getInvoicestype() {
+        return invoicestype;
     }
 
-    public void setTypeid(Integer typeid) {
-        this.typeid = typeid;
+    public void setInvoicestype(String invoicestype) {
+        this.invoicestype = invoicestype;
     }
 
-    public Integer getClubid() {
-        return clubid;
+    public Club getClub() {
+        return club;
     }
 
-    public void setClubid(Integer clubid) {
-        this.clubid = clubid;
+    public void setClub(Club club) {
+        this.club = club;
     }
 
-    public Integer getUserid() {
-        return userid;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Integer getForall() {
@@ -82,15 +83,30 @@ public class Invoices {
         this.forall = forall;
     }
 
-    public Invoices(Integer id, String num, String date, String detail, Integer typeid, Integer clubid, Integer userid, Integer forall) {
+    public Invoices(Integer id, String num, String tdate, String detail, String invoicestype, Club club, User user, Integer forall) {
         this.id = id;
         this.num = num;
-        this.date = date;
+        this.tdate = tdate;
         this.detail = detail;
-        this.typeid = typeid;
-        this.clubid = clubid;
-        this.userid = userid;
+        this.invoicestype = invoicestype;
+        this.club = club;
+        this.user = user;
         this.forall = forall;
+    }
+
+    @Override
+    public String toString() {
+        return "Invoices{" +
+                "id=" + id +
+                ", num='" + num + '\'' +
+                ", money=" + money +
+                ", tdate='" + tdate + '\'' +
+                ", detail='" + detail + '\'' +
+                ", invoicestype='" + invoicestype + '\'' +
+                ", club=" + club +
+                ", user=" + user +
+                ", forall=" + forall +
+                '}';
     }
 
     public Invoices() {

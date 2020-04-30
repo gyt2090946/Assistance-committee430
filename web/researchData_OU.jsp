@@ -1,15 +1,13 @@
 <%--
   Created by IntelliJ IDEA.
-  User: gyt20
+  User: 25036
   Date: 2020/4/23
-  Time: 18:33
+  Time: 15:13
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
@@ -20,6 +18,13 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/materialdesignicons.min.css" rel="stylesheet">
   <link href="css/style.min.css" rel="stylesheet">
+
+  <style>
+    table,th,td{
+      text-align: center;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -36,14 +41,14 @@
 
         <nav class="sidebar-main">
           <ul class="nav nav-drawer">
-            <li class="nav-item active"> <a href="index_FU.jsp"><i class="mdi mdi-home"></i> 系统首页</a> </li>
+            <li class="nav-item active"> <a href="index_FU.html"><i class="mdi mdi-home"></i> 系统首页</a> </li>
             <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-palette"></i> 清单数据操作</a>
               <ul class="nav nav-subnav">
                 <li> <a href="writeData_FU.html">填报数据</a> </li>
                 <li> <a href="writeData_FU.html">修改数据</a> </li>
-                <li> <a href="researchData_FU.html">查询数据</a> </li>
-                <li> <a href="researchData_FU.html">输出数据</a> </li>
+                <li> <a href="researchData_OU.jsp">查询数据</a> </li>
+                <li> <a href="researchData_OU.jsp">输出数据</a> </li>
               </ul>
             </li>
             <li class="nav-item nav-item-has-subnav">
@@ -72,7 +77,7 @@
               <span class="lyear-toggler-bar"></span>
               <span class="lyear-toggler-bar"></span>
             </div>
-            <span class="navbar-page-title"> ${user.username}的系统首页 </span>
+            <span class="navbar-page-title"> XXX(后台拿数据)系统首页 </span>
           </div>
 
           <ul class="topbar-right">
@@ -228,34 +233,120 @@
     <main class="lyear-layout-content">
 
       <div class="container-fluid">
-        <div class="card">
-          <div class="card-header bg-primary">
-            <h3>您属于以下后援会：</h3>
+        <div style="margin: 5px 200px 15px; display: flex">
+          <div style="flex: 1">
+            <form class="form-inline" action="getInvoicesByType" method="get">
+            <div class="form-group">
+              <span class="text-muted">按照类型查询:</span>
+              <label class="sr-only">清单类型</label>
+              <select class="form-control" id="list_style" name="invoicestype">
+                <option value="0">请选择清单类型</option>
+                <option value="实体支出">实体支出</option>
+                <option value="虚拟支出">虚拟支出</option>
+                <option value="活动支出">活动支出</option>
+              </select>
+              <button class="btn btn-default search-price" type="submit">搜索</button>
+            </div>
+          </form>
           </div>
-          <div class="card-body">
-            <div class="masonry-grid gap-2" data-provide="photoswipe">
+          <div style="flex: 1;">
+            <form class="form-inline" action="getInvoicesByNum" method="get">
+              <div class="form-group" style="margin-left: 100px">
+                <span class="text-muted">按照清单单号查询:</span>
+                <label class="sr-only" for="clubName">名称</label>
+                <input class="form-control product" type="text" id="clubName" name="num"  placeholder="单号">
+                <button class="btn btn-default search-pro" type="submit">搜索</button>
+              </div>
+            </form>
 
-              <a class="masonry-item" href="#">
-                <img src="images/gallery/2.jpg" alt="The selected child description">
-              </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-toolbar clearfix">
+              </div>
+              <div class="card-body">
 
-              <a class="masonry-item" href="#">
-                <img src="images/gallery/3.jpg" alt="The selected child description">
-              </a>
-
-              <a class="masonry-item" href="#">
-                <img src="images/gallery/4.jpg" alt="The selected child description">
-              </a>
-
-              <a class="masonry-item" href="#">
-                <img src="images/gallery/5.jpg" alt="The selected child description">
-              </a>
+                <div class="table-responsive" >
+                  <table class="table table-bordered" style="text-align: center">
+                    <thead>
+                      <tr >
+                        <th width="5%">
+                          <label class="lyear-checkbox checkbox-primary">
+                            <input type="checkbox" id="check-all"><span></span>
+                          </label>
+                        </th>
+                        <th width="20%">账单编号</th>
+                        <th width="20%">后援会</th>
+                        <th width="10%">账单类型</th>
+                        <th width="10%">主要用途</th>
+                        <th width="10%">金额</th>
+                        <th width="10%">上传人</th>
+                        <th width="15%">操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <c:forEach items="${invoices}" var="invoice">
+                        <tr>
+                          <td>
+                            <label class="lyear-checkbox checkbox-primary">
+                              <input type="checkbox" name="ids[]" value="1"><span></span>
+                            </label>
+                          </td>
+                          <td>${invoice.num}</td>
+                          <td>${invoice.club.clubname}</td>
+                          <td>${invoice.invoicestype}</td>
+                          <td>${invoice.detail}</td>
+                          <td>${invoice.money}</td>
+                          <td>${invoice.user.username}</td>
+                             <td>
+                               <div class="btn-group">
+                                 <a class="btn btn-xs btn-default" href="writeData_OU.html" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
+                                 <a class="btn btn-xs btn-default" href="#" title="导出" data-toggle="tooltip"><i class="mdi mdi-import"></i></a>
+                                 <a class="btn btn-xs btn-default" href="#" title="举报" data-toggle="tooltip"><i class="mdi mdi-alert-circle"></i></a>
+                               </div>
+                             </td>
+                        </tr>
+                      </c:forEach>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="toolbar-btn-action pull-right">
+                  <a class="btn btn-primary m-r-5" href="writeData_FU.html"><i class="mdi mdi-plus"></i> 新增</a>
+                </div>
+                <div>
+                  <ul class="pagination">
+                  <li><a href="getAllInvoices?page=1">首页</a></li>
+                  <c:if test="${pageInfo.pageNum == 1}">
+                    <li class="disabled"><span>«</span></li>
+                  </c:if>
+                  <c:if test="${pageInfo.pageNum > 1}">
+                    <li><a href="getAllInvoices?page=${pageInfo.pageNum-1}">«</a></li>
+                  </c:if>
+                  <c:forEach items="${pageInfo.navigatepageNums}" var="page">
+                    <c:if test="${page == pageInfo.pageNum}">
+                      <li class="active"><a href="#">${page}</a></li>
+                    </c:if>
+                    <c:if test="${page != pageInfo.pageNum}">
+                      <li><a href="getAllInvoices?page=${page}">${page}</a></li>
+                    </c:if>
+                  </c:forEach>
+                  <c:if test="${pageInfo.pageNum < pageInfo.pages}">
+                    <li><a href="getAllInvoices?page=${pageInfo.pageNum+1}">»</a></li>
+                  </c:if>
+                    <c:if test="${pageInfo.pageNum == pageInfo.pages}">
+                      <li class="disabled"><span>»</span></li>
+                    </c:if>
+                </ul>
+              </div>
             </div>
           </div>
+
         </div>
 
       </div>
-
+      </div>
     </main>
     <!--End 页面主要内容-->
   </div>
@@ -265,53 +356,9 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
 <script type="text/javascript" src="js/main.min.js"></script>
-
+<script src="js/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<script src="js/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
 <!--图表插件-->
 <script type="text/javascript" src="js/Chart.js"></script>
-<script type="text/javascript">
-  $(document).ready(function(e) {
-    var $dashChartBarsCnt  = jQuery( '.js-chartjs-bars' )[0].getContext( '2d' ),
-        $dashChartLinesCnt = jQuery( '.js-chartjs-lines' )[0].getContext( '2d' );
-
-    var $dashChartBarsData = {
-      labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-      datasets: [
-        {
-          label: '注册用户',
-          borderWidth: 1,
-          borderColor: 'rgba(0,0,0,0)',
-          backgroundColor: 'rgba(51,202,185,0.5)',
-          hoverBackgroundColor: "rgba(51,202,185,0.7)",
-          hoverBorderColor: "rgba(0,0,0,0)",
-          data: [2500, 1500, 1200, 3200, 4800, 3500, 1500]
-        }
-      ]
-    };
-    var $dashChartLinesData = {
-      labels: ['2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014'],
-      datasets: [
-        {
-          label: '交易资金',
-          data: [20, 25, 40, 30, 45, 40, 55, 40, 48, 40, 42, 50],
-          borderColor: '#358ed7',
-          backgroundColor: 'rgba(53, 142, 215, 0.175)',
-          borderWidth: 1,
-          fill: false,
-          lineTension: 0.5
-        }
-      ]
-    };
-
-    new Chart($dashChartBarsCnt, {
-      type: 'bar',
-      data: $dashChartBarsData
-    });
-
-    var myLineChart = new Chart($dashChartLinesCnt, {
-      type: 'line',
-      data: $dashChartLinesData,
-    });
-  });
-</script>
 </body>
 </html>

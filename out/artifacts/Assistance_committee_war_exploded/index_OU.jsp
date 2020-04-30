@@ -10,7 +10,6 @@
 <html lang="zh-CN">
 
 <head>
-<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>首页 - 应援财务数据申报系统</title>
@@ -36,21 +35,22 @@
 
         <nav class="sidebar-main">
           <ul class="nav nav-drawer">
-            <li class="nav-item active"> <a href="index_FU.jsp"><i class="mdi mdi-home"></i> 系统首页</a> </li>
+            <li class="nav-item active"> <a href="index_OU.jsp"><i class="mdi mdi-home"></i> 系统首页</a> </li>
+            <li class="nav-item active"> <a href="register_fanclub_OU.jsp"><i class="mdi mdi-account-plus"></i> 注册后援会</a> </li>
             <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-palette"></i> 清单数据操作</a>
               <ul class="nav nav-subnav">
-                <li> <a href="writeData_FU.html">填报数据</a> </li>
-                <li> <a href="writeData_FU.html">修改数据</a> </li>
-                <li> <a href="researchData_FU.html">查询数据</a> </li>
-                <li> <a href="researchData_FU.html">输出数据</a> </li>
+                <li> <a href="writeData_OU.jsp">填报数据</a> </li>
+                <li> <a href="writeData_OU.jsp">修改数据</a> </li>
+                <li> <a href="researchData_OU.html">查询数据</a> </li>
+                <li> <a href="researchData_OU.html">输出数据</a> </li>
               </ul>
             </li>
             <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-format-align-justify"></i> 报告操作</a>
               <ul class="nav nav-subnav">
-                <li> <a href="researchReport_FU.html">查询报告</a> </li>
-                <li> <a href="researchReport_FU.html">输出报告</a> </li>
+                <li> <a href="researchReport_OU.html">查询报告</a> </li>
+                <li> <a href="researchReport_OU.html">输出报告</a> </li>
               </ul>
             </li>
           </ul>
@@ -72,7 +72,7 @@
               <span class="lyear-toggler-bar"></span>
               <span class="lyear-toggler-bar"></span>
             </div>
-            <span class="navbar-page-title"> ${user.username}的系统首页 </span>
+            <span class="navbar-page-title"> XXX(后台拿数据)系统首页 </span>
           </div>
 
           <ul class="topbar-right">
@@ -82,8 +82,8 @@
                 <span>用户操作<span class="caret"></span></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
-                <li> <a href="lyear_pages_profile_FU.html"><i class="mdi mdi-account"></i> 个人信息</a> </li>
-                <li> <a href="lyear_pages_edit_pwd_FU.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
+                <li> <a href="lyear_pages_profile_OU.html"><i class="mdi mdi-account"></i> 个人信息</a> </li>
+                <li> <a href="lyear_pages_edit_pwd_OU.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
                 <li> <a href="javascript:void(0)"><i class="mdi mdi-delete"></i> 清空缓存</a></li>
                 <li class="divider"></li>
                 <li> <a href="lyear_pages_registered.html"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
@@ -231,6 +231,7 @@
         <div class="card">
           <div class="card-header bg-primary">
             <h3>您属于以下后援会：</h3>
+            <button class="pull-right btn btn-w-md btn-round btn-secondary" onclick="location.href='select_funclub.html'">添加后援会</button>
           </div>
           <div class="card-body">
             <div class="masonry-grid gap-2" data-provide="photoswipe">

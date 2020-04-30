@@ -1,15 +1,12 @@
 <%--
   Created by IntelliJ IDEA.
-  User: gyt20
+  User: 25036
   Date: 2020/4/23
-  Time: 18:33
+  Time: 15:13
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
@@ -20,8 +17,15 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/materialdesignicons.min.css" rel="stylesheet">
   <link href="css/style.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="js/jconfirm/jquery-confirm.min.css">
+  <link href="css/style.min.css" rel="stylesheet">
+  <style>
+    .lyear-layout-content{
+      /*margin: 0 auto;*/
+      margin-left: 250px;
+    }
+  </style>
 </head>
-
 <body>
 <div class="lyear-layout-web">
   <div class="lyear-layout-container">
@@ -36,21 +40,22 @@
 
         <nav class="sidebar-main">
           <ul class="nav nav-drawer">
-            <li class="nav-item active"> <a href="index_FU.jsp"><i class="mdi mdi-home"></i> 系统首页</a> </li>
+            <li class="nav-item active"> <a href="index_OU.jsp"><i class="mdi mdi-home"></i> 系统首页</a> </li>
+            <li class="nav-item active"> <a href="register_fanclub_OU.jsp"><i class="mdi mdi-account-plus"></i> 注册后援会</a> </li>
             <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-palette"></i> 清单数据操作</a>
               <ul class="nav nav-subnav">
-                <li> <a href="writeData_FU.html">填报数据</a> </li>
-                <li> <a href="writeData_FU.html">修改数据</a> </li>
-                <li> <a href="researchData_FU.html">查询数据</a> </li>
-                <li> <a href="researchData_FU.html">输出数据</a> </li>
+                <li> <a href="writeData_OU.jsp">填报数据</a> </li>
+                <li> <a href="writeData_OU.jsp">修改数据</a> </li>
+                <li> <a href="researchData_OU.html">查询数据</a> </li>
+                <li> <a href="researchData_OU.html">输出数据</a> </li>
               </ul>
             </li>
             <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-format-align-justify"></i> 报告操作</a>
               <ul class="nav nav-subnav">
-                <li> <a href="researchReport_FU.html">查询报告</a> </li>
-                <li> <a href="researchReport_FU.html">输出报告</a> </li>
+                <li> <a href="researchReport_OU.html">查询报告</a> </li>
+                <li> <a href="researchReport_OU.html">输出报告</a> </li>
               </ul>
             </li>
           </ul>
@@ -72,7 +77,7 @@
               <span class="lyear-toggler-bar"></span>
               <span class="lyear-toggler-bar"></span>
             </div>
-            <span class="navbar-page-title"> ${user.username}的系统首页 </span>
+            <span class="navbar-page-title"> XXX(后台拿数据)系统首页 </span>
           </div>
 
           <ul class="topbar-right">
@@ -82,8 +87,8 @@
                 <span>用户操作<span class="caret"></span></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
-                <li> <a href="lyear_pages_profile_FU.html"><i class="mdi mdi-account"></i> 个人信息</a> </li>
-                <li> <a href="lyear_pages_edit_pwd_FU.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
+                <li> <a href="lyear_pages_profile_OU.html"><i class="mdi mdi-account"></i> 个人信息</a> </li>
+                <li> <a href="lyear_pages_edit_pwd_OU.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
                 <li> <a href="javascript:void(0)"><i class="mdi mdi-delete"></i> 清空缓存</a></li>
                 <li class="divider"></li>
                 <li> <a href="lyear_pages_registered.html"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
@@ -226,92 +231,119 @@
 
     <!--页面主要内容-->
     <main class="lyear-layout-content">
-
       <div class="container-fluid">
-        <div class="card">
-          <div class="card-header bg-primary">
-            <h3>您属于以下后援会：</h3>
-          </div>
-          <div class="card-body">
-            <div class="masonry-grid gap-2" data-provide="photoswipe">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header"><h3>后援会注册</h3></div>
+            <div class="card-body">
 
-              <a class="masonry-item" href="#">
-                <img src="images/gallery/2.jpg" alt="The selected child description">
-              </a>
-
-              <a class="masonry-item" href="#">
-                <img src="images/gallery/3.jpg" alt="The selected child description">
-              </a>
-
-              <a class="masonry-item" href="#">
-                <img src="images/gallery/4.jpg" alt="The selected child description">
-              </a>
-
-              <a class="masonry-item" href="#">
-                <img src="images/gallery/5.jpg" alt="The selected child description">
-              </a>
+              <form class="form-horizontal" action="registClub" method="post">
+                <div class="form-group">
+                  <label class="col-xs-12" for="fanclub_name">后援会名称</label>
+                  <div class="col-xs-12">
+                    <input class="form-control" type="text" name="clubname" id="fanclub_name" placeholder="例如：胡歌后援会">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-xs-12" for="user_name">注册人姓名</label>
+                  <div class="col-xs-12">
+                    <input class="form-control" type="text" id="user_name" placeholder="例如：张三">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-xs-12" for="user_idcard">注册人身份证号</label>
+                  <div class="col-xs-12">
+                    <input class="form-control" type="text" id="user_idcard" placeholder="请输入正确的证件号码">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-xs-12" for="example-email-input">注册人邮箱</label>
+                  <div class="col-xs-12">
+                    <input class="form-control" type="email" id="example-email-input" placeholder="邮箱">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-xs-12" for="user_address">注册人通讯地址</label>
+                  <div class="col-xs-12">
+                    <input class="form-control" type="text" id="user_address" name="example-password-input" placeholder="请输入正确的通讯地址">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-xs-12" for="user_iphone">注册人手机号码</label>
+                  <div class="col-xs-12">
+                    <input class="form-control" type="text" id="user_iphone" name="example-password-input" placeholder="请输入正确的手机号码">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-xs-12" for="textarea-input">后援会信息说明</label>
+                  <div class="col-xs-12">
+                    <textarea class="form-control" id="textarea-input" name="tdescribe" rows="6" placeholder="内容.."></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-xs-12" for="manager_num">设置管理员人数</label>
+                  <div class="col-xs-12">
+                    <select class="form-control" id="manager_num" name="example-select" size="1">
+                      <option value="0">请选择</option>
+                      <option value="1">2</option>
+                      <option value="2">4</option>
+                      <option value="3">6</option>
+                    </select>
+                  </div>
+                </div>
+                <%--                <div class="form-group">--%>
+                <%--                  <label class="col-xs-12" for="photo-input">上传后援会封面</label>--%>
+                <%--                  <div class="col-xs-12">--%>
+                <%--                    <input type="file" id="photo-input" >--%>
+                <%--                  </div>--%>
+                <%--                </div>--%>
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <button class="btn btn-primary btn-block example-p-1" type="submit">注册</button>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-
       </div>
-
     </main>
     <!--End 页面主要内容-->
   </div>
 </div>
-
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
 <script type="text/javascript" src="js/main.min.js"></script>
-
-<!--图表插件-->
-<script type="text/javascript" src="js/Chart.js"></script>
-<script type="text/javascript">
-  $(document).ready(function(e) {
-    var $dashChartBarsCnt  = jQuery( '.js-chartjs-bars' )[0].getContext( '2d' ),
-        $dashChartLinesCnt = jQuery( '.js-chartjs-lines' )[0].getContext( '2d' );
-
-    var $dashChartBarsData = {
-      labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-      datasets: [
-        {
-          label: '注册用户',
-          borderWidth: 1,
-          borderColor: 'rgba(0,0,0,0)',
-          backgroundColor: 'rgba(51,202,185,0.5)',
-          hoverBackgroundColor: "rgba(51,202,185,0.7)",
-          hoverBorderColor: "rgba(0,0,0,0)",
-          data: [2500, 1500, 1200, 3200, 4800, 3500, 1500]
-        }
-      ]
-    };
-    var $dashChartLinesData = {
-      labels: ['2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014'],
-      datasets: [
-        {
-          label: '交易资金',
-          data: [20, 25, 40, 30, 45, 40, 55, 40, 48, 40, 42, 50],
-          borderColor: '#358ed7',
-          backgroundColor: 'rgba(53, 142, 215, 0.175)',
-          borderWidth: 1,
-          fill: false,
-          lineTension: 0.5
-        }
-      ]
-    };
-
-    new Chart($dashChartBarsCnt, {
-      type: 'bar',
-      data: $dashChartBarsData
-    });
-
-    var myLineChart = new Chart($dashChartLinesCnt, {
-      type: 'line',
-      data: $dashChartLinesData,
-    });
-  });
-</script>
+<script src="js/jconfirm/jquery-confirm.min.js"></script>
+<%--  <script type="text/javascript">--%>
+<%--    $('.example-p-1').on('click', function () {--%>
+<%--      $.alert({--%>
+<%--        title: '提示',--%>
+<%--        content: '确认提交？',--%>
+<%--        buttons: {--%>
+<%--          confirm: {--%>
+<%--            text: '确认',--%>
+<%--            btnClass: 'btn-primary',--%>
+<%--            action: function(){--%>
+<%--              $.alert('提交成功!');--%>
+<%--              window.setTimeout(function() {--%>
+<%--                window.location.href = 'index_OU.html'--%>
+<%--              },1000);--%>
+<%--            }--%>
+<%--          },--%>
+<%--          cancel: {--%>
+<%--            text: '取消',--%>
+<%--            action: function () {--%>
+<%--              $.alert('您已取消提交!');--%>
+<%--            }--%>
+<%--          }--%>
+<%--        }--%>
+<%--      });--%>
+<%--    });--%>
+<%--  </script>--%>
 </body>
 </html>
+
+
+

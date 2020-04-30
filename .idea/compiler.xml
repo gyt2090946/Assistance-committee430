@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Assistance-committee-zf-1.1" />
+        <module name="Assistance-committee" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Assistance-committee-zf-1.1" target="6" />
+      <module name="Assistance-committee" target="6" />
     </bytecodeTargetLevel>
   </component>
 </project>

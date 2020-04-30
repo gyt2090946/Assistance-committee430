@@ -45,10 +45,10 @@
             <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-palette"></i> 清单数据操作</a>
               <ul class="nav nav-subnav">
-                <li> <a href="writeData_OU.html">填报数据</a> </li>
-                <li> <a href="writeData_OU.html">修改数据</a> </li>
-                <li> <a href="researchData_OU.html">查询数据</a> </li>
-                <li> <a href="researchData_OU.html">输出数据</a> </li>
+                <li> <a href="writeData_OU.jsp">填报数据</a> </li>
+                <li> <a href="writeData_OU.jsp">修改数据</a> </li>
+                <li> <a href="researchData_OU.jsp">查询数据</a> </li>
+                <li> <a href="researchData_OU.jsp">输出数据</a> </li>
               </ul>
             </li>
             <li class="nav-item nav-item-has-subnav">
@@ -77,7 +77,7 @@
               <span class="lyear-toggler-bar"></span>
               <span class="lyear-toggler-bar"></span>
             </div>
-            <span class="navbar-page-title"> XXX(后台拿数据)系统首页 </span>
+            <span class="navbar-page-title"> ${user.username}的首页 </span>
           </div>
 
           <ul class="topbar-right">
@@ -237,7 +237,9 @@
             <div class="card-header"><h3>后援会注册</h3></div>
             <div class="card-body">
 
-              <form class="form-horizontal" action="registClub" method="post">
+              <%--<form class="form-horizontal" action="${pageContext.request.contextPath}/registClub" method="post">--%>
+              <%--<form class="form-horizontal">--%>
+              <form class="form-horizontal" action="#" method="post" enctype="multipart/form-data" onsubmit="return false;">
                 <div class="form-group">
                   <label class="col-xs-12" for="fanclub_name">后援会名称</label>
                   <div class="col-xs-12">
@@ -291,15 +293,10 @@
                     </select>
                   </div>
                 </div>
-                <%--                <div class="form-group">--%>
-                <%--                  <label class="col-xs-12" for="photo-input">上传后援会封面</label>--%>
-                <%--                  <div class="col-xs-12">--%>
-                <%--                    <input type="file" id="photo-input" >--%>
-                <%--                  </div>--%>
-                <%--                </div>--%>
                 <div class="form-group">
                   <div class="col-xs-12">
-                    <button class="btn btn-primary btn-block example-p-1" type="submit">注册</button>
+                    <%--<button class="btn btn-primary btn-block example-p-1" type="submit">注册</button>--%>
+                    <button class="btn btn-primary btn-block example-p-1" >注册</button>
                   </div>
                 </div>
               </form>
@@ -316,32 +313,47 @@
 <script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
 <script type="text/javascript" src="js/main.min.js"></script>
 <script src="js/jconfirm/jquery-confirm.min.js"></script>
-<%--  <script type="text/javascript">--%>
-<%--    $('.example-p-1').on('click', function () {--%>
-<%--      $.alert({--%>
-<%--        title: '提示',--%>
-<%--        content: '确认提交？',--%>
-<%--        buttons: {--%>
-<%--          confirm: {--%>
-<%--            text: '确认',--%>
-<%--            btnClass: 'btn-primary',--%>
-<%--            action: function(){--%>
-<%--              $.alert('提交成功!');--%>
-<%--              window.setTimeout(function() {--%>
-<%--                window.location.href = 'index_OU.html'--%>
-<%--              },1000);--%>
-<%--            }--%>
-<%--          },--%>
-<%--          cancel: {--%>
-<%--            text: '取消',--%>
-<%--            action: function () {--%>
-<%--              $.alert('您已取消提交!');--%>
-<%--            }--%>
-<%--          }--%>
-<%--        }--%>
-<%--      });--%>
-<%--    });--%>
-<%--  </script>--%>
+<script type="text/javascript">
+    $('.example-p-1').on('click', function () {
+        $.alert({
+            title: '提示',
+            content: '确认提交？',
+            buttons: {
+                confirm: {
+                    text: '确认',
+                    btnClass: 'btn-primary',
+                    action: function(){
+                        let clubname = $("#fanclub_name").val();
+                        let tdescribe = $("#textarea-input").val();
+                        // console.log(clubname+tdescribe);
+                        $.ajax({
+                            type:'post',
+                            url: '${pageContext.request.contextPath}/registClub',
+                            data:{clubname:clubname,tdescribe:tdescribe},
+                            success:function (data) {
+                                if(data == '1'){
+                                    $.alert('提交成功!');
+                                    window.setTimeout(function() {
+                                        window.location.href = 'fanclub_success_OU.jsp'
+                                    },1000);
+                                }else{
+                                    $.alert('提交失败，请从新填写信息!');
+                                }
+                            }
+                        })
+
+                    }
+                },
+                cancel: {
+                    text: '取消',
+                    action: function () {
+                        $.alert('您已取消提交!');
+                    }
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>
 

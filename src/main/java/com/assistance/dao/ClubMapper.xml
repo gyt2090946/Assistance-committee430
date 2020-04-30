@@ -9,4 +9,9 @@
         insert into club(clubname,predidentid,tdescribe) values(#{clubname},#{predidentid},#{tdescribe});
     </insert>
 
+    <!-- 获取所有后援会信息 -->
+    <select id="getAllClub" resultType="com.assistance.pojo.Club">
+        select * from club
+    </select>
+
 </mapper>

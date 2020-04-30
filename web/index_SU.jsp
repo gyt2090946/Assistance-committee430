@@ -69,7 +69,7 @@
               <span class="lyear-toggler-bar"></span>
               <span class="lyear-toggler-bar"></span>
             </div>
-            <span class="navbar-page-title"> XXX(后台拿数据)系统首页 </span>
+            <span class="navbar-page-title"> ${user.username}的系统首页 </span>
           </div>
 
           <ul class="topbar-right">

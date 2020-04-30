@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Assistance-committee-zf-1.1.iml" filepath="$PROJECT_DIR$/.idea/Assistance-committee-zf-1.1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Assistance-committee.iml" filepath="$PROJECT_DIR$/.idea/Assistance-committee.iml" />
     </modules>
   </component>
 </project>

@@ -41,7 +41,7 @@
 
                 <nav class="sidebar-main">
                     <ul class="nav nav-drawer">
-                        <li class="nav-item active"> <a href="index.html"><i class="mdi mdi-home"></i>系统首页</a> </li>
+                        <li class="nav-item active"> <a href="index.jsp"><i class="mdi mdi-home"></i>系统首页</a> </li>
                     </ul>
                 </nav>
             </div>
@@ -61,7 +61,7 @@
                             <span class="lyear-toggler-bar"></span>
                             <span class="lyear-toggler-bar"></span>
                         </div>
-                        <span class="navbar-page-title"> XXX(后台拿数据)系统首页 </span>
+                        <span class="navbar-page-title"> ${user.username}的系统首页 </span>
                     </div>
 
                     <ul class="topbar-right">

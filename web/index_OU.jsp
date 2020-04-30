@@ -40,17 +40,17 @@
             <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-palette"></i> 清单数据操作</a>
               <ul class="nav nav-subnav">
-                <li> <a href="writeData_OU.html">填报数据</a> </li>
-                <li> <a href="writeData_OU.html">修改数据</a> </li>
-                <li> <a href="researchData_OU.html">查询数据</a> </li>
-                <li> <a href="researchData_OU.html">输出数据</a> </li>
+                <li> <a href="writeData_OU.jsp">填报数据</a> </li>
+                <li> <a href="writeData_OU.jsp">修改数据</a> </li>
+                <li> <a href="researchData_OU.jsp">查询数据</a> </li>
+                <li> <a href="researchData_OU.jsp">输出数据</a> </li>
               </ul>
             </li>
             <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-format-align-justify"></i> 报告操作</a>
               <ul class="nav nav-subnav">
-                <li> <a href="researchReport_OU.html">查询报告</a> </li>
-                <li> <a href="researchReport_OU.html">输出报告</a> </li>
+                <li> <a href="researchReport_OU.jsp">查询报告</a> </li>
+                <li> <a href="researchReport_OU.jsp">输出报告</a> </li>
               </ul>
             </li>
           </ul>
@@ -72,7 +72,7 @@
               <span class="lyear-toggler-bar"></span>
               <span class="lyear-toggler-bar"></span>
             </div>
-            <span class="navbar-page-title"> XXX(后台拿数据)系统首页 </span>
+            <span class="navbar-page-title"> ${user.username}的系统首页 </span>
           </div>
 
           <ul class="topbar-right">
